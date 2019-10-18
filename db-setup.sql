@@ -30,7 +30,7 @@
 --     isPrivate TINYINT,
 --     views INT DEFAULT 0,
 --     shares INT DEFAULT 0,
---     keeps INT DEFAULT 0,
+--     stores INT DEFAULT 0,
 --     INDEX userId (userId),
 --     FOREIGN KEY (userId)
 --         REFERENCES users(id)
@@ -62,14 +62,14 @@
 -- );
 
 
--- -- USE THIS LINE FOR GET KEEPS BY VAULTID
--- SELECT * FROM vaultkeeps vk
--- INNER JOIN keeps k ON k.id = vk.keepId 
--- WHERE (vaultId = @vaultId AND vk.userId = @userId) 
+-- -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
+-- -- SELECT * FROM vaultkeeps vk
+-- -- INNER JOIN keeps k ON k.id = vk.keepId 
+-- -- WHERE (vaultId = @vaultId AND vk.userId = @userId) 
 
 
 
--- -- USE THIS TO CLEAN OUT YOUR DATABASE
+-- -- -- USE THIS TO CLEAN OUT YOUR DATABASE
 -- -- DROP TABLE IF EXISTS vaultkeeps;
 -- -- DROP TABLE IF EXISTS vaults;
 -- -- DROP TABLE IF EXISTS keeps;
