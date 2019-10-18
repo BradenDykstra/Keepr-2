@@ -1,3 +1,5 @@
+-- USE toastkeepr;
+
 -- CREATE TABLE users (
 --     id VARCHAR(255) NOT NULL,
 --     username VARCHAR(255) NOT NULL,
@@ -57,7 +59,7 @@
 --     FOREIGN KEY (keepId)
 --         REFERENCES keeps(id)
 --         ON DELETE CASCADE
--- )
+-- );
 
 
 -- -- USE THIS LINE FOR GET KEEPS BY VAULTID
@@ -68,7 +70,7 @@
 
 
 -- -- USE THIS TO CLEAN OUT YOUR DATABASE
--- DROP TABLE IF EXISTS vaultkeeps;
--- DROP TABLE IF EXISTS vaults;
--- DROP TABLE IF EXISTS keeps;
--- DROP TABLE IF EXISTS users;
+-- -- DROP TABLE IF EXISTS vaultkeeps;
+-- -- DROP TABLE IF EXISTS vaults;
+-- -- DROP TABLE IF EXISTS keeps;
+-- -- DROP TABLE IF EXISTS users;
