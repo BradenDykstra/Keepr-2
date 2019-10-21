@@ -42,6 +42,14 @@ export default new Router({
         // @ts-ignore
         return import(/* webpackChunkName: "myKeeps" */ './views/MyKeeps.vue')
       }
+    },
+    {
+      path: '/makeKeep',
+      name: 'makeKeep',
+      component: function () {
+        // @ts-ignore
+        return import(/* webpackChunkName: "makeKeep" */ './views/MakeKeep.vue')
+      }
     }
   ]
 })

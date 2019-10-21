@@ -106,6 +106,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async createKeep({ commit, dispatch }, payload) {
+      try {
+        await api.post('keeps', payload)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //!SECTION 
 
     //SECTION --VAULTS--
