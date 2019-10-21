@@ -17,10 +17,26 @@ namespace Keepr.Services
       return _repo.Get(id);
     }
 
+    public Vault GetById(int id, string userId)
+    {
+      Vault exists = _repo.GetById(id);
+      if (exists == null) { throw new Exception("That don't exist, y'all"); }
+      if (exists.UserId != userId) { throw new Exception("That ain't yours, y'all"); }
+      return exists;
+    }
     public Vault Create(Vault newVault)
     {
-      _repo.Create(newVault);
-      return newVault;
+      int retVault = _repo.Create(newVault);
+      return _repo.GetById(retVault);
+    }
+
+    public string Delete(int id, string userId)
+    {
+      Vault exists = _repo.GetById(id);
+      if (exists == null) { throw new Exception("Can't delete what doesn't exist"); }
+      if (exists.UserId != userId) { throw new Exception("Can't delete what isn't yours"); }
+      _repo.Delete(id);
+      return "Successfully deleted";
     }
   }
 }

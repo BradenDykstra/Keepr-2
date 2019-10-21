@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using Keepr.Models;
+using Keepr.Repositories;
+
+namespace Keepr.Services
+{
+  public class VaultKeepsService
+  {
+    private readonly VaultKeepsRepo _repo;
+    private readonly VaultsRepo _vRepo;
+    private readonly KeepsRepo _kRepo;
+    public VaultKeepsService(VaultKeepsRepo repo, VaultsRepo vRepo, KeepsRepo kRepo)
+    {
+      _repo = repo;
+      _vRepo = vRepo;
+      _kRepo = kRepo;
+    }
+
+    public IEnumerable<VaultKeep> Get(int vaultId)
+    {
+      return _repo.Get(vaultId);
+    }
+
+    public string Create(VaultKeep newVK)
+    {
+      Vault vault = _vRepo.GetById(newVK.VaultId);
+      Keep keep = _kRepo.Get(newVK.KeepId);
+      if (vault == null || keep == null) { throw new Exception("Something doesn't exist here..."); }
+      _repo.Create(newVK);
+      return "Successfully created";
+    }
+
+    public string Delete(VaultKeep vk1)
+    {
+      VaultKeep vk = _repo.GetByIds(vk1.VaultId, vk1.KeepId);
+      if (vk == null) { throw new Exception("Can't delete what doesn't exist at all"); }
+      _repo.Delete(vk.Id);
+      return "Successfully deleted";
+    }
+  }
+}
