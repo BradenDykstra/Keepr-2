@@ -27,6 +27,8 @@ namespace Keepr.Services
       Vault vault = _vRepo.GetById(newVK.VaultId);
       Keep keep = _kRepo.Get(newVK.KeepId);
       if (vault == null || keep == null) { throw new Exception("Something doesn't exist here..."); }
+      VaultKeep exists = _repo.GetByIds(newVK.VaultId, newVK.KeepId);
+      if (exists != null) { throw new Exception("That keep is already in that vault"); }
       _repo.Create(newVK);
       return "Successfully created";
     }

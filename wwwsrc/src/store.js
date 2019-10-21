@@ -29,6 +29,8 @@ export default new Vuex.Store({
     resetState(state) {
       //clear the entire state object of user data
       state.user = {}
+      state.vaults = []
+      state.vault = {}
     },
     setKeeps(state, keeps) {
       state.keeps = keeps;
@@ -89,7 +91,7 @@ export default new Vuex.Store({
         console.error(e)
       }
     },
-    async addViewToKeep({ commit, dispatch }, payload) {
+    async addToKeep({ commit, dispatch }, payload) {
       try {
         await api.put('keeps/' + payload.id, payload)
       } catch (e) {
@@ -123,6 +125,15 @@ export default new Vuex.Store({
       try {
         let vaultKeeps = await api.get('vaultkeeps/' + payload)
         commit('setKeeps', vaultKeeps.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async storeKeep({ commit, dispatch }, payload) {
+      try {
+        await api.post('vaultkeeps', payload)
+        let keep = await api.get('keeps/' + payload.keepId)
+        dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views })
       } catch (error) {
         console.error(error)
       }

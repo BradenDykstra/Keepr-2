@@ -17,9 +17,6 @@
               <i class="fas fa-save fa-2x btn-success badge-pill py-2">{{keepProp.stores}}</i>
             </div>
           </div>
-          <!-- <div class="col-12 mt-2">
-            <button class="btn btn-warning badge-pill" @click="goHome()">Home</button>
-          </div>-->
         </div>
       </div>
     </div>

@@ -10,7 +10,18 @@
     <div class="card-body">
       <h3 class="card-title">{{keepProp.name}}</h3>
       <i class="far fa-eye fa-2x bg-primary badge-pill py-1">{{keepProp.views}}</i>
-      <i class="fas fa-save fa-2x btn-success badge-pill py-1">{{keepProp.stores}}</i>
+      <i
+        class="fas fa-save fa-2x btn-success badge-pill py-1"
+        data-toggle="dropdown"
+      >{{keepProp.stores}}</i>
+      <div class="dropdown-menu">
+        <p
+          v-for="vault in vaults"
+          :key="vault.id"
+          class="dropdown-item"
+          @click="storeKeep(keepProp.id, vault.id)"
+        >{{vault.name}}</p>
+      </div>
     </div>
     <KeepView :keepProp="keepProp" />
   </div>
@@ -24,13 +35,21 @@ export default {
   data() {
     return {};
   },
-  computed: {},
+  computed: {
+    vaults() {
+      return this.$store.state.vaults;
+    }
+  },
   methods: {
     viewKeep() {
-      this.$store.dispatch("addViewToKeep", {
+      this.$store.dispatch("addToKeep", {
         id: this.keepProp.id,
-        views: this.keepProp.views + 1
+        views: this.keepProp.views + 1,
+        stores: this.keepProp.stores
       });
+    },
+    storeKeep(keepId, vaultId) {
+      this.$store.dispatch("storeKeep", { keepId: keepId, vaultId: vaultId });
     }
   },
   components: { KeepView },

@@ -2,13 +2,10 @@
   <div class="home">
     <div class="row justify-content-center">
       <div class="col-2"></div>
-      <h1 class="text-light mt-3 col-8" v-if="user.id">Welcome Home, {{user.username}}</h1>
+      <h1 class="text-light mt-3 col-8" v-if="user.id">Welcome Home, {{user.username}}!</h1>
+      <h1 class="text-light mt-3 col-8" v-else>Welcome to ToastKeepr!</h1>
       <div class="col-2 mt-5">
-        <i class="fas fa-bars text-light fa-3x" data-toggle="dropdown"></i>
-        <div class="dropdown-menu">
-          <p class="dropdown-item" @click="goToKeeps()">The Keeps</p>
-          <p class="dropdown-item" @click="goToVaults()">My Vaults</p>
-        </div>
+        <dropDown v-if="user.id" />
       </div>
     </div>
     <div class="row justify-content-center">
@@ -24,6 +21,7 @@
 
 <script>
 import keepComp from "../components/KeepComp.vue";
+import dropDown from "../components/DropDown.vue";
 export default {
   name: "home",
   computed: {
@@ -36,6 +34,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getKeeps");
+    this.$store.dispatch("getVaults");
   },
   methods: {
     logout() {
@@ -51,7 +50,7 @@ export default {
       this.$router.push("/vaults");
     }
   },
-  components: { keepComp }
+  components: { keepComp, dropDown }
 };
 </script>
 

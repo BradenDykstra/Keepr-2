@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <h1 class="text-light my-5">Welcome to ToastKeepr</h1>
+    <h1 class="text-light my-5">Welcome to ToastKeepr!</h1>
     <form class="row justify-content-center mt-5" v-if="loginForm" @submit.prevent="loginUser">
       <input class="form-control col-4" type="email" v-model="creds.email" placeholder="email" />
       <input

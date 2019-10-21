@@ -1,5 +1,6 @@
 <template>
   <div class="oneVault">
+    <button class="btn-danger badge-pill" @click="backToVaults">Back to Vaults</button>
     <div class="row justify-content-around mt-2">
       <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
@@ -22,7 +23,11 @@ export default {
       return this.$store.state.keeps;
     }
   },
-  methods: {},
+  methods: {
+    backToVaults() {
+      this.$router.push("/vaults");
+    }
+  },
   components: { keepComp }
 };
 </script>
