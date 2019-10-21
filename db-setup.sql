@@ -1,5 +1,6 @@
--- USE toastkeepr;
+USE toastkeepr;
 
+-- SELECT * FROM vaults
 -- CREATE TABLE users (
 --     id VARCHAR(255) NOT NULL,
 --     username VARCHAR(255) NOT NULL,

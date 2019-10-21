@@ -20,11 +20,19 @@ export default new Router({
       component: Login
     },
     {
-      path: '/keep/:id',
-      name: 'keep',
+      path: '/vaults',
+      name: 'vaults',
       component: function () {
         // @ts-ignore
-        return import(/* webpackChunkName: "keepView" */ './views/KeepView.vue')
+        return import(/* webpackChunkName: "vaults" */ './views/MyVaults.vue')
+      }
+    },
+    {
+      path: '/vault/:id',
+      name: 'vault',
+      component: function () {
+        // @ts-ignore
+        return import(/* webpackChunkName: "vault" */ './views/OneVault.vue')
       }
     }
   ]

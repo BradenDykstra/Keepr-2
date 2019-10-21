@@ -18,9 +18,10 @@ namespace Keepr.Controllers
     }
 
     [HttpGet("{vaultId}")]
-    public ActionResult<IEnumerable<VaultKeep>> Get(int vaultId)
+    public ActionResult<IEnumerable<Keep>> Get(int vaultId)
     {
-      return Ok(_vks.Get(vaultId));
+      string userId = HttpContext.User.FindFirstValue("Id");
+      return Ok(_vks.Get(vaultId, userId));
     }
 
     [HttpPost]

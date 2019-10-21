@@ -17,9 +17,9 @@ namespace Keepr.Services
       _kRepo = kRepo;
     }
 
-    public IEnumerable<VaultKeep> Get(int vaultId)
+    public IEnumerable<Keep> Get(int vaultId, string userId)
     {
-      return _repo.Get(vaultId);
+      return _repo.Get(vaultId, userId);
     }
 
     public string Create(VaultKeep newVK)

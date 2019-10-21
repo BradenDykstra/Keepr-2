@@ -4,9 +4,11 @@ using Keepr.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Keepr.Controllers
 {
+  [Authorize]
   [ApiController]
   [Route("api/[controller]")]
   public class VaultsController : ControllerBase
