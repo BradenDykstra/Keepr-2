@@ -4,6 +4,7 @@
     <div class="dropdown-menu">
       <p class="dropdown-item" @click="goToKeeps()">The Keeps</p>
       <p class="dropdown-item" @click="goToVaults()">My Vaults</p>
+      <p class="dropdown-item" @click="goToMyKeeps()">My Keeps</p>
     </div>
   </div>
 </template>
@@ -22,6 +23,9 @@ export default {
     },
     goToVaults() {
       this.$router.push("/vaults");
+    },
+    goToMyKeeps() {
+      this.$router.push("/myKeeps");
     }
   },
   components: {}

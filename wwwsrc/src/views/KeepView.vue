@@ -16,6 +16,7 @@
               <i class="far fa-eye fa-2x bg-primary badge-pill py-2">{{keepProp.views}}</i>
               <i class="fas fa-save fa-2x btn-success badge-pill py-2">{{keepProp.stores}}</i>
             </div>
+            <i v-if="user.id == keepProp.userId" class="fas fa-trash text-danger m-5"></i>
           </div>
         </div>
       </div>
@@ -32,7 +33,11 @@ export default {
       keep: {}
     };
   },
-  computed: {},
+  computed: {
+    user() {
+      return this.$store.state.user;
+    }
+  },
   mounted() {},
   methods: {
     goHome() {

@@ -98,6 +98,14 @@ export default new Vuex.Store({
         console.error(e)
       }
     },
+    async getKeepsByUser({ commit, dispatch }, payload) {
+      try {
+        let keeps = await api.get('keeps/user');
+        commit('setKeeps', keeps.data)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //!SECTION 
 
     //SECTION --VAULTS--

@@ -34,6 +34,14 @@ export default new Router({
         // @ts-ignore
         return import(/* webpackChunkName: "vault" */ './views/OneVault.vue')
       }
+    },
+    {
+      path: '/myKeeps',
+      name: 'myKeeps',
+      component: function () {
+        // @ts-ignore
+        return import(/* webpackChunkName: "myKeeps" */ './views/MyKeeps.vue')
+      }
     }
   ]
 })

@@ -2,7 +2,7 @@
   <div class="myVaults">
     <div class="row justify-content-center">
       <div class="col-2"></div>
-      <h1 class="text-light mt-5 mb-3 col-8" v-if="user.id">Welcome Home, {{user.username}}</h1>
+      <h1 class="text-light mt-5 mb-3 col-8" v-if="user.id">{{user.username}}'s Vaults</h1>
       <div class="col-2 mt-5">
         <dropDown />
       </div>
