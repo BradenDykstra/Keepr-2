@@ -1,10 +1,11 @@
 <template>
   <div class="keepComp card mx-2 my-2">
     <img
-      class="card-img-top"
+      class="card-img-top mt-2"
       :src="keepProp.img"
       data-toggle="modal"
       :data-target="'#keepView'+keepProp.id"
+      @click="viewKeep"
     />
     <div class="card-body">
       <h3 class="card-title">{{keepProp.name}}</h3>
@@ -26,7 +27,10 @@ export default {
   computed: {},
   methods: {
     viewKeep() {
-      this.$router.push("keep/" + this.keepProp.id);
+      this.$store.dispatch("addViewToKeep", {
+        id: this.keepProp.id,
+        views: this.keepProp.views + 1
+      });
     }
   },
   components: { KeepView },

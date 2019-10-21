@@ -81,6 +81,13 @@ export default new Vuex.Store({
       } catch (e) {
         console.error(e)
       }
+    },
+    async addViewToKeep({ commit, dispatch }, payload) {
+      try {
+        await api.put('keeps/' + payload.id, payload)
+      } catch (e) {
+        console.error(e)
+      }
     }
   }
 })

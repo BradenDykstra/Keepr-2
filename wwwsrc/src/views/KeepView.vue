@@ -9,7 +9,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <div class="card col-12">
-            <img class="card-img-top" :src="keepProp.img" />
+            <img class="card-img-top mt-2" :src="keepProp.img" />
             <div class="card-body">
               <h1 class="card-title">{{keepProp.name}}</h1>
               <h4>{{keepProp.description}}</h4>
