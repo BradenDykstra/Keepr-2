@@ -3,8 +3,8 @@
     <img class="card-img-top" :src="keepProp.img" />
     <div class="card-body">
       <h3 class="card-title">{{keepProp.name}}</h3>
-      <button class="btn-primary badge-pill">{{keepProp.views}}</button>
-      <button class="btn-success badge-pill">{{keepProp.stores}}</button>
+      <i class="far fa-eye fa-2x bg-primary badge-pill py-1">{{keepProp.views}}</i>
+      <i class="fas fa-save fa-2x btn-success badge-pill py-1">{{keepProp.stores}}</i>
     </div>
   </div>
 </template>
@@ -30,4 +30,10 @@ export default {
 
 
 <style scoped>
+i {
+  font-size: 1.25em;
+}
+.btn-success {
+  cursor: pointer;
+}
 </style>
