@@ -8,6 +8,7 @@
       </div>
     </div>
     <hr class="bg-light" />
+    <button class="btn btn-primary" @click="goToMakeVault">New Vault</button>
     <div class="row justify-content-around">
       <div
         class="card col-3 mx-2 my-3"
@@ -46,6 +47,9 @@ export default {
   methods: {
     viewVault(id) {
       this.$router.push("/vault/" + id);
+    },
+    goToMakeVault() {
+      this.$router.push("/makeVault");
     }
   },
   components: { dropDown }

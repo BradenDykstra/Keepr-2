@@ -50,6 +50,14 @@ export default new Router({
         // @ts-ignore
         return import(/* webpackChunkName: "makeKeep" */ './views/MakeKeep.vue')
       }
+    },
+    {
+      path: '/makeVault',
+      name: 'makeVault',
+      component: function () {
+        // @ts-ignore
+        return import(/* webpackChunkName: "makeVault" */ './views/MakeVault.vue')
+      }
     }
   ]
 })
