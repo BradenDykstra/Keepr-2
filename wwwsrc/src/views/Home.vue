@@ -1,11 +1,11 @@
 <template>
   <div class="home">
     <div class="row justify-content-center">
-      <h1 class="text-light" v-if="user.id">Welcome Home, {{user.username}}</h1>
+      <h1 class="text-light mt-3" v-if="user.id">Welcome Home, {{user.username}}</h1>
     </div>
     <div class="row justify-content-center">
       <button class="btn-danger badge-pill" v-if="user.id" @click="logout">logout</button>
-      <router-link v-else :to="{name: 'login'}">Login</router-link>
+      <button class="btn-primary badge-pill" v-else @click="login">Login</button>
     </div>
     <div class="row justify-content-around mt-2">
       <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
@@ -31,6 +31,9 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch("logout");
+    },
+    login() {
+      this.$router.push("/login");
     }
   },
   components: { keepComp }
