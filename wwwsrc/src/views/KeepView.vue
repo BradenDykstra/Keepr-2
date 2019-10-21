@@ -16,7 +16,12 @@
               <i class="far fa-eye fa-2x bg-primary badge-pill py-2">{{keepProp.views}}</i>
               <i class="fas fa-save fa-2x btn-success badge-pill py-2">{{keepProp.stores}}</i>
             </div>
-            <i v-if="user.id == keepProp.userId" class="fas fa-trash text-danger m-5"></i>
+            <i
+              v-if="user.id == keepProp.userId"
+              class="fas fa-trash text-danger m-5"
+              @click="deleteKeep"
+              data-dismiss="modal"
+            ></i>
           </div>
         </div>
       </div>
@@ -26,6 +31,7 @@
 
 
 <script>
+import swal from "sweetalert2";
 export default {
   name: "keepView",
   data() {
@@ -42,6 +48,23 @@ export default {
   methods: {
     goHome() {
       this.$router.push("/");
+    },
+    deleteKeep() {
+      swal
+        .fire({
+          title: "Do you want to delete this keep?",
+          text: "This can't be undone!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
+        })
+        .then(result => {
+          if (result.value) {
+            this.$store.dispatch("deleteKeep", this.keepProp.id);
+          }
+        });
     }
   },
   components: {},

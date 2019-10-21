@@ -19,7 +19,7 @@
           v-for="vault in vaults"
           :key="vault.id"
           class="dropdown-item"
-          @click="storeKeep(keepProp.id, vault.id)"
+          @click="storeKeep(vault.id)"
         >{{vault.name}}</p>
       </div>
     </div>
@@ -48,8 +48,11 @@ export default {
         stores: this.keepProp.stores
       });
     },
-    storeKeep(keepId, vaultId) {
-      this.$store.dispatch("storeKeep", { keepId: keepId, vaultId: vaultId });
+    storeKeep(vaultId) {
+      this.$store.dispatch("storeKeep", {
+        keepId: this.keepProp.id,
+        vaultId: vaultId
+      });
     }
   },
   components: { KeepView },

@@ -113,6 +113,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async deleteKeep({ commit, dispatch }, payload) {
+      try {
+        await api.delete('keeps/' + payload)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //!SECTION 
 
     //SECTION --VAULTS--
