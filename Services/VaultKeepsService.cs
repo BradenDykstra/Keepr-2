@@ -35,6 +35,7 @@ namespace Keepr.Services
     {
       VaultKeep vk = _repo.GetByIds(vk1.VaultId, vk1.KeepId);
       if (vk == null) { throw new Exception("Can't delete what doesn't exist at all"); }
+      if (vk.UserId != vk1.UserId) { throw new Exception("That one ain't yours"); }
       _repo.Delete(vk.Id);
       return "Successfully deleted";
     }

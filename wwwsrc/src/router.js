@@ -18,6 +18,14 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/keep/:id',
+      name: 'keep',
+      component: function () {
+        // @ts-ignore
+        return import(/* webpackChunkName: "keepView" */ './views/KeepView.vue')
+      }
     }
   ]
 })
