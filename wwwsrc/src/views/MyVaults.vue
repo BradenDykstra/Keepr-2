@@ -8,7 +8,12 @@
       </div>
     </div>
     <hr class="bg-light" />
-    <button class="btn btn-primary" @click="goToMakeVault">New Vault</button>
+    <button
+      class="badge-pill btn-primary"
+      data-toggle="modal"
+      data-target="#makeVaultModal"
+    >New Vault</button>
+    <make-vault-modal />
     <div class="row justify-content-around">
       <div
         class="card col-3 mx-2 my-3"
@@ -28,6 +33,7 @@
 
 <script>
 import dropDown from "../components/DropDown.vue";
+import makeVaultModal from "./MakeVault.vue";
 export default {
   name: "myVaults",
   data() {
@@ -52,7 +58,7 @@ export default {
       this.$router.push("/makeVault");
     }
   },
-  components: { dropDown }
+  components: { dropDown, makeVaultModal }
 };
 </script>
 

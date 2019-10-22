@@ -8,7 +8,8 @@
       </div>
     </div>
     <hr class="bg-light" />
-    <button class="btn btn-primary" @click="goToMakeKeep">New Keep</button>
+    <button class="badge-pill btn-primary" data-toggle="modal" data-target="#makeKeepModal">New Keep</button>
+    <make-keep-modal />
     <div class="row justify-content-around">
       <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
@@ -19,6 +20,7 @@
 <script>
 import dropDown from "../components/DropDown.vue";
 import keepComp from "../components/KeepComp.vue";
+import makeKeepModal from "./MakeKeep.vue";
 export default {
   name: "myKeeps",
   data() {
@@ -40,7 +42,7 @@ export default {
       this.$router.push("/makeKeep");
     }
   },
-  components: { dropDown, keepComp }
+  components: { dropDown, keepComp, makeKeepModal }
 };
 </script>
 

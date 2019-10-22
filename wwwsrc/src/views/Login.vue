@@ -6,38 +6,42 @@
         <form class="justify-content-center" v-if="loginForm" @submit.prevent="loginUser">
           <div class="row">
             <input
-              class="form-control col-8 offset-2"
+              class="form-control col-8 offset-2 my-2"
               type="email"
               v-model="creds.email"
               placeholder="email"
             />
             <input
-              class="form-control col-8 offset-2"
+              class="form-control col-8 offset-2 my-2"
               type="password"
               v-model="creds.password"
               placeholder="password"
             />
           </div>
           <div class="row">
-            <button type="submit" class="btn-success btn col-2 offset-5" @click="close">Login</button>
+            <button
+              type="submit"
+              class="btn-success badge-pill col-2 offset-5 my-3"
+              @click="close"
+            >Login</button>
           </div>
         </form>
         <form class="justify-content-center" v-else @submit.prevent="register">
           <div class="row">
             <input
-              class="form-control col-8 offset-2"
+              class="form-control col-8 offset-2 my-2"
               type="text"
               v-model="newUser.username"
               placeholder="name"
             />
             <input
-              class="form-control col-8 offset-2"
+              class="form-control col-8 offset-2 my-2"
               type="email"
               v-model="newUser.email"
               placeholder="email"
             />
             <input
-              class="form-control col-8 offset-2"
+              class="form-control col-8 offset-2 my-2"
               type="password"
               v-model="newUser.password"
               placeholder="password"
@@ -46,7 +50,7 @@
           <div class="row">
             <button
               type="submit"
-              class="btn-warning btn col-2 offset-5"
+              class="btn-warning badge-pill col-2 offset-5 my-3"
               @click="close"
             >Create Account</button>
           </div>
