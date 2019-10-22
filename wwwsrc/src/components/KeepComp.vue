@@ -24,7 +24,7 @@
       </span>
       <span data-toggle="tooltip" title="Store this keep in a vault">
         <i
-          class="fas fa-bread-slice fa-2x dark-btn badge-pill py-1"
+          class="ra ra-toast fa-2x dark-btn badge-pill py-1"
           data-toggle="dropdown"
         >{{keepProp.stores}}</i>
         <div class="dropdown-menu blue-bg">
