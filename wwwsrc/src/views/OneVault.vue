@@ -1,12 +1,6 @@
 <template>
   <div class="oneVault">
-    <div class="row justify-content-center">
-      <div class="col-2"></div>
-      <h1 class="light-text mt-5 mb-3 col-8">{{vault.name}}</h1>
-      <div class="col-2 mt-5">
-        <dropDown />
-      </div>
-    </div>
+    <top-bar />
     <hr class="light-bg" />
     <button class="red-btn badge-pill" @click="backToVaults">Back to Vaults</button>
     <i
@@ -23,9 +17,9 @@
 
 
 <script>
+import topBar from "../components/TopBar.vue";
 import swal from "sweetalert2";
 import keepComp from "../components/KeepComp.vue";
-import dropDown from "../components/DropDown.vue";
 export default {
   name: "oneVault",
   data() {
@@ -71,7 +65,7 @@ export default {
         });
     }
   },
-  components: { keepComp, dropDown }
+  components: { keepComp, topBar }
 };
 </script>
 

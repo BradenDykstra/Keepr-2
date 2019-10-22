@@ -1,12 +1,6 @@
 <template>
   <div class="myVaults">
-    <div class="row justify-content-center">
-      <div class="col-2"></div>
-      <h1 class="light-text mt-5 mb-3 col-8" v-if="user.id">{{user.username}}'s Vaults</h1>
-      <div class="col-2 mt-5">
-        <dropDown />
-      </div>
-    </div>
+    <top-bar />
     <hr class="light-bg" />
     <button class="badge-pill blue-btn" data-toggle="modal" data-target="#makeVaultModal">New Vault</button>
     <make-vault-modal />
@@ -28,7 +22,7 @@
 
 
 <script>
-import dropDown from "../components/DropDown.vue";
+import topBar from "../components/TopBar.vue";
 import makeVaultModal from "./MakeVault.vue";
 export default {
   name: "myVaults",
@@ -51,7 +45,7 @@ export default {
       this.$router.push("/vault/" + id);
     }
   },
-  components: { dropDown, makeVaultModal }
+  components: { makeVaultModal, topBar }
 };
 </script>
 

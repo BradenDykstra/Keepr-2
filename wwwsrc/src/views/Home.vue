@@ -1,13 +1,6 @@
 <template>
   <div class="home">
-    <div class="row justify-content-center">
-      <div class="col-2"></div>
-      <h1 class="light-text mt-3 col-8" v-if="user.id">Welcome Home, {{user.username}}!</h1>
-      <h1 class="light-text mt-3 col-8" v-else>Welcome to ToastKeepr!</h1>
-      <div class="col-2 mt-5">
-        <dropDown v-if="user.id" />
-      </div>
-    </div>
+    <topBar />
     <div class="row justify-content-center">
       <button class="red-btn badge-pill" v-if="user.id" @click="logout">Logout</button>
       <button class="blue-btn badge-pill" v-else data-toggle="modal" data-target="#loginModal">Login</button>
@@ -23,7 +16,7 @@
 <script>
 import login from "./Login.vue";
 import keepComp from "../components/KeepComp.vue";
-import dropDown from "../components/DropDown.vue";
+import topBar from "../components/TopBar.vue";
 export default {
   name: "home",
   computed: {
@@ -52,12 +45,9 @@ export default {
       this.$router.push("/vaults");
     }
   },
-  components: { keepComp, dropDown, login }
+  components: { keepComp, login, topBar }
 };
 </script>
 
-<style>
-.fa-bars {
-  cursor: pointer;
-}
+<style scoped>
 </style>

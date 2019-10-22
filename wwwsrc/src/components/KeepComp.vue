@@ -14,16 +14,17 @@
         :data-target="'#keepView'+keepProp.id"
         @click="viewKeep"
       >{{keepProp.name}}</h3>
-      <i
-        class="far fa-eye fa-2x blue-btn badge-pill py-1"
-        data-toggle="modal"
-        title="Views"
-        @click="viewKeep"
-        :data-target="'#keepView'+keepProp.id"
-      >{{keepProp.views}}</i>
+      <span data-toggle="tooltip" title="Views">
+        <i
+          class="far fa-eye fa-2x blue-btn badge-pill py-1"
+          data-toggle="modal"
+          @click="viewKeep"
+          :data-target="'#keepView'+keepProp.id"
+        >{{keepProp.views}}</i>
+      </span>
       <span data-toggle="tooltip" title="Store this keep in a vault">
         <i
-          class="fas fa-save fa-2x dark-btn badge-pill py-1"
+          class="fas fa-bread-slice fa-2x dark-btn badge-pill py-1"
           data-toggle="dropdown"
         >{{keepProp.stores}}</i>
         <div class="dropdown-menu blue-bg">

@@ -6,7 +6,7 @@
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Baloo Bhai", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -26,8 +26,13 @@
   color: #42b983;
 }
 
-* {
-  font-family: "Baloo Bhai", cursive;
+.fa-bars {
+  cursor: pointer;
+}
+
+.logo {
+  cursor: pointer;
+  width: 85%;
 }
 
 .light-bg {
