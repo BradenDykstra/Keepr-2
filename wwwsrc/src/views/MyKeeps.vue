@@ -2,13 +2,13 @@
   <div class="myKeeps">
     <div class="row justify-content-center">
       <div class="col-2"></div>
-      <h1 class="text-light mt-5 mb-3 col-8" v-if="user.id">{{user.username}}'s Keeps</h1>
+      <h1 class="light-text mt-5 mb-3 col-8" v-if="user.id">{{user.username}}'s Keeps</h1>
       <div class="col-2 mt-5">
         <dropDown />
       </div>
     </div>
-    <hr class="bg-light" />
-    <button class="badge-pill btn-primary" data-toggle="modal" data-target="#makeKeepModal">New Keep</button>
+    <hr class="light-bg" />
+    <button class="badge-pill blue-btn" data-toggle="modal" data-target="#makeKeepModal">New Keep</button>
     <make-keep-modal />
     <div class="row justify-content-around">
       <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />

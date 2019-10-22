@@ -1,11 +1,10 @@
 <template>
   <div id="makeVaultModal" class="makeVault modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
+      <div class="modal-content light-bg dark-text">
         <div class="row justify-content-center">
           <h1 class="mt-5 col-12">Make a New Vault</h1>
         </div>
-        <hr class="bg-light mt-2" />
         <form class="justify-content-center mt-5" @submit.prevent="createVault">
           <div class="row">
             <input
@@ -25,7 +24,7 @@
           <div class="row">
             <button
               type="submit"
-              class="btn-success badge-pill my-3 col-2 offset-5"
+              class="yellow-btn badge-pill my-3 col-2 offset-5"
               @click="close"
             >Create</button>
           </div>

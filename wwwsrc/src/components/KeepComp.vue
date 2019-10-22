@@ -1,5 +1,5 @@
 <template>
-  <div class="keepComp card mx-2 my-2">
+  <div class="keepComp card mx-2 my-2 light-bg dark-text">
     <img
       class="card-img-top mt-2"
       :src="keepProp.img"
@@ -10,12 +10,12 @@
     <div class="card-body">
       <h3 class="card-title">{{keepProp.name}}</h3>
       <i
-        class="far fa-eye fa-2x bg-primary badge-pill py-1"
+        class="far fa-eye fa-2x blue-btn badge-pill py-1"
         data-toggle="tooltip"
         title="Views"
       >{{keepProp.views}}</i>
       <i
-        class="fas fa-save fa-2x btn-success badge-pill py-1"
+        class="fas fa-save fa-2x yellow-btn badge-pill py-1"
         data-toggle="dropdown"
       >{{keepProp.stores}}</i>
       <div class="dropdown-menu">

@@ -1,8 +1,8 @@
 <template>
   <div id="loginModal" class="login modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <h1 class="my-5">Welcome to ToastKeepr!</h1>
+      <div class="modal-content light-bg">
+        <h1 class="dark-text my-5">Welcome to ToastKeepr!</h1>
         <form class="justify-content-center" v-if="loginForm" @submit.prevent="loginUser">
           <div class="row">
             <input
@@ -21,7 +21,7 @@
           <div class="row">
             <button
               type="submit"
-              class="btn-success badge-pill col-2 offset-5 my-3"
+              class="blue-btn badge-pill col-2 offset-5 my-3"
               @click="close"
             >Login</button>
           </div>
@@ -50,12 +50,12 @@
           <div class="row">
             <button
               type="submit"
-              class="btn-warning badge-pill col-2 offset-5 my-3"
+              class="yellow-btn badge-pill col-2 offset-5 my-3"
               @click="close"
             >Create Account</button>
           </div>
         </form>
-        <div @click="loginForm = !loginForm">
+        <div @click="loginForm = !loginForm" class="dark-text">
           <p v-if="loginForm">No account? Click to Register</p>
           <p v-else>Already have an account? Click to Login</p>
         </div>

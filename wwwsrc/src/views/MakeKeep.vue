@@ -1,7 +1,7 @@
 <template>
   <div id="makeKeepModal" class="makeKeep modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
+      <div class="modal-content light-bg dark-text">
         <div class="row justify-content-center">
           <div class="col-2"></div>
           <h1 class="mt-5 col-8">Post a Keep</h1>
@@ -9,7 +9,6 @@
             <dropDown />
           </div>
         </div>
-        <hr class="bg-light mt-2" />
         <form class="justify-content-center mt-5" @submit.prevent="createKeep">
           <div class="row">
             <input
@@ -34,7 +33,7 @@
           <div class="row">
             <button
               type="submit"
-              class="btn-success badge-pill col-2 offset-5 my-3"
+              class="yellow-btn badge-pill col-2 offset-5 my-3"
               @click="close"
             >Create</button>
           </div>

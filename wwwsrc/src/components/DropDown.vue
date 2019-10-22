@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <i class="fas fa-bars text-light fa-3x" data-toggle="dropdown"></i>
+    <i class="fas fa-bars light-text fa-3x" data-toggle="dropdown"></i>
     <div class="dropdown-menu">
       <p class="dropdown-item" @click="goToKeeps()">The Keeps</p>
       <p class="dropdown-item" @click="goToVaults()">My Vaults</p>

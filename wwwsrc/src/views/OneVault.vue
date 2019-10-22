@@ -2,15 +2,15 @@
   <div class="oneVault">
     <div class="row justify-content-center">
       <div class="col-2"></div>
-      <h1 class="text-light mt-5 mb-3 col-8">{{vault.name}}</h1>
+      <h1 class="light-text mt-5 mb-3 col-8">{{vault.name}}</h1>
       <div class="col-2 mt-5">
         <dropDown />
       </div>
     </div>
-    <hr class="bg-light" />
-    <button class="btn-danger badge-pill" @click="backToVaults">Back to Vaults</button>
+    <hr class="light-bg" />
+    <button class="red-btn badge-pill" @click="backToVaults">Back to Vaults</button>
     <i
-      class="fas fa-trash text-danger m-5"
+      class="fas fa-trash red-text m-5"
       @click="deleteVault"
       data-toggle="tooltip"
       title="Delete this vault"
