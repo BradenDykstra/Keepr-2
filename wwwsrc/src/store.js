@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 import router from './router'
 import AuthService from './AuthService'
+import swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -170,7 +171,16 @@ export default new Vuex.Store({
       try {
         await api.post('vaultkeeps', payload)
         let keep = await api.get('keeps/' + payload.keepId)
-        dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views })
+        dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views }).then(res => {
+          swal.fire({
+            type: "success",
+            text: "Added to Vault!",
+            toast: true,
+            timer: 3000,
+            showConfirmButton: false,
+            position: "top-right"
+          });
+        });
       } catch (error) {
         console.error(error)
       }

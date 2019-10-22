@@ -5,7 +5,7 @@
     <button class="badge-pill blue-btn" data-toggle="modal" data-target="#makeKeepModal">New Keep</button>
     <make-keep-modal />
     <div class="row justify-content-around">
-      <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
+      <keepComp class="col-md-2 col-6" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
   </div>
 </template>

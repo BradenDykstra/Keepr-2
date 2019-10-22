@@ -8,7 +8,7 @@
     </div>
     <hr class="light-bg" />
     <div class="row justify-content-around mt-2">
-      <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
+      <keepComp class="col-md-2 col-6" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
   </div>
 </template>

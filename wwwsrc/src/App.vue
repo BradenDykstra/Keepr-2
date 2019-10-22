@@ -6,11 +6,15 @@
 
 <style>
 #app {
-  font-family: "Baloo Bhai", cursive;
+  font-family: "Indie Flower", cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
 }
 
 #nav {

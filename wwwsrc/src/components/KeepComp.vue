@@ -44,6 +44,7 @@
 
 <script>
 import KeepView from "../views/KeepView.vue";
+import swal from "sweetalert2";
 export default {
   name: "keepComp",
   data() {

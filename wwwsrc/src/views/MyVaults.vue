@@ -6,7 +6,7 @@
     <make-vault-modal />
     <div class="row justify-content-around">
       <div
-        class="card col-3 mx-2 my-3 light-bg dark-text"
+        class="card col-6 mx-2 my-3 light-bg dark-text"
         v-for="vault in vaults"
         :key="vault.id"
         @click="viewVault(vault.id)"
