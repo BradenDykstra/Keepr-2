@@ -26,10 +26,14 @@ export default {
     },
     user() {
       return this.$store.state.user;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
   mounted() {
     this.$store.dispatch("getKeepsByUser");
+    this.$store.dispatch("getVaults");
   },
   methods: {
     goToMakeKeep() {

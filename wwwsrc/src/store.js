@@ -98,6 +98,14 @@ export default new Vuex.Store({
         console.error(e)
       }
     },
+    async addAStore({ commit, dispatch }, payload) {
+      try {
+        let keep = await api.get('keeps/' + payload)
+        await api.put('keeps/' + payload, { stores: keep.data.stores + 1, views: keep.data.views })
+      } catch (error) {
+        console.error(error)
+      }
+    },
     async getKeepsByUser({ commit, dispatch }, payload) {
       try {
         let keeps = await api.get('keeps/user');
@@ -171,16 +179,17 @@ export default new Vuex.Store({
       try {
         await api.post('vaultkeeps', payload)
         let keep = await api.get('keeps/' + payload.keepId)
-        dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views }).then(res => {
-          swal.fire({
-            type: "success",
-            text: "Added to Vault!",
-            toast: true,
-            timer: 3000,
-            showConfirmButton: false,
-            position: "top-right"
+          // dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views })
+          .then(res => {
+            swal.fire({
+              type: "success",
+              text: "Stored in Vault!",
+              toast: true,
+              timer: 3000,
+              showConfirmButton: false,
+              position: "top-right"
+            });
           });
-        });
       } catch (error) {
         console.error(error)
       }

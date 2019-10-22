@@ -85,6 +85,9 @@ export default {
           vaultId: vaultId
         })
         .then(res => {
+          this.$store.dispatch("addAStore", this.keepProp.id);
+        })
+        .then(res => {
           if (this.$route.name == "myKeeps") {
             this.$store.dispatch("getKeepsByUser");
           } else if (this.$route.name == "home") {
