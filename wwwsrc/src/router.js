@@ -15,11 +15,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
       path: '/vaults',
       name: 'vaults',
       component: function () {
@@ -41,22 +36,6 @@ export default new Router({
       component: function () {
         // @ts-ignore
         return import(/* webpackChunkName: "myKeeps" */ './views/MyKeeps.vue')
-      }
-    },
-    {
-      path: '/makeKeep',
-      name: 'makeKeep',
-      component: function () {
-        // @ts-ignore
-        return import(/* webpackChunkName: "makeKeep" */ './views/MakeKeep.vue')
-      }
-    },
-    {
-      path: '/makeVault',
-      name: 'makeVault',
-      component: function () {
-        // @ts-ignore
-        return import(/* webpackChunkName: "makeVault" */ './views/MakeVault.vue')
       }
     }
   ]

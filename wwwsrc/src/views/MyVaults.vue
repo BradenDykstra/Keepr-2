@@ -53,9 +53,6 @@ export default {
   methods: {
     viewVault(id) {
       this.$router.push("/vault/" + id);
-    },
-    goToMakeVault() {
-      this.$router.push("/makeVault");
     }
   },
   components: { dropDown, makeVaultModal }

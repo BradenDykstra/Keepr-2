@@ -32,7 +32,11 @@
             />
           </div>
           <div class="row">
-            <button type="submit" class="btn-success badge-pill col-2 offset-5 my-3">Create</button>
+            <button
+              type="submit"
+              class="btn-success badge-pill col-2 offset-5 my-3"
+              @click="close"
+            >Create</button>
           </div>
         </form>
       </div>

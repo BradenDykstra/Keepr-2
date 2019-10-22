@@ -23,7 +23,11 @@
             />
           </div>
           <div class="row">
-            <button type="submit" class="btn-success badge-pill my-3 col-2 offset-5">Create</button>
+            <button
+              type="submit"
+              class="btn-success badge-pill my-3 col-2 offset-5"
+              @click="close"
+            >Create</button>
           </div>
         </form>
       </div>
@@ -48,9 +52,10 @@ export default {
   },
   methods: {
     createVault() {
-      this.$store.dispatch("createVault", this.newVault).then(res => {
-        this.$router.push("/vaults");
-      });
+      this.$store.dispatch("createVault", this.newVault);
+    },
+    close() {
+      $("#makeVaultModal").modal("hide");
     }
   },
   components: { dropDown }
