@@ -22,14 +22,14 @@
                 class="fas fa-save fa-2x btn-success badge-pill py-1"
                 data-toggle="dropdown"
               >{{keepProp.stores}}</i>
-            </div>
-            <div class="dropdown-menu">
-              <p
-                v-for="vault in vaults"
-                :key="vault.id"
-                class="dropdown-item"
-                @click="storeKeep(vault.id)"
-              >{{vault.name}}</p>
+              <div class="dropdown-menu">
+                <p
+                  v-for="vault in vaults"
+                  :key="vault.id"
+                  class="dropdown-item"
+                  @click="storeKeep(vault.id)"
+                >{{vault.name}}</p>
+              </div>
             </div>
             <span data-toggle="tooltip" title="Delete this keep">
               <i
