@@ -13,21 +13,38 @@
             <div class="card-body">
               <h1 class="card-title">{{keepProp.name}}</h1>
               <h4>{{keepProp.description}}</h4>
-              <i class="far fa-eye fa-2x bg-primary badge-pill py-2">{{keepProp.views}}</i>
-              <i class="fas fa-save fa-2x btn-success badge-pill py-2">{{keepProp.stores}}</i>
+              <i
+                class="far fa-eye fa-2x bg-primary badge-pill py-1"
+                data-toggle="tooltip"
+                title="Views"
+              >{{keepProp.views}}</i>
+              <i
+                class="fas fa-save fa-2x btn-success badge-pill py-1"
+                data-toggle="dropdown"
+              >{{keepProp.stores}}</i>
             </div>
-            <i
-              v-if="user.id == keepProp.userId"
-              class="fas fa-trash text-danger m-5"
-              @click="deleteKeep"
-              data-dismiss="modal"
-            ></i>
-            <i
-              v-if="this.$route.params.id"
-              class="fas fa-ban text-danger m-5"
-              @click="removeKeep"
-              data-dismiss="modal"
-            ></i>
+            <div class="dropdown-menu">
+              <p
+                v-for="vault in vaults"
+                :key="vault.id"
+                class="dropdown-item"
+                @click="storeKeep(vault.id)"
+              >{{vault.name}}</p>
+            </div>
+            <span data-toggle="tooltip" title="Delete this keep">
+              <i
+                v-if="user.id == keepProp.userId"
+                class="fas fa-trash text-danger m-2"
+                @click="deleteKeep"
+              ></i>
+            </span>
+            <span data-toggle="tooltip" title="Remove this keep from this vault">
+              <i
+                v-if="this.$route.params.id"
+                class="fas fa-ban text-danger m-3"
+                @click="removeKeep"
+              ></i>
+            </span>
           </div>
         </div>
       </div>
@@ -48,9 +65,16 @@ export default {
   computed: {
     user() {
       return this.$store.state.user;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
-  mounted() {},
+  mounted() {
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  },
   methods: {
     deleteKeep() {
       swal
@@ -65,7 +89,14 @@ export default {
         })
         .then(result => {
           if (result.value) {
-            this.$store.dispatch("deleteKeep", this.keepProp.id);
+            $("#keepView" + this.keepProp.id).modal("hide");
+            this.$store.dispatch("deleteKeep", this.keepProp.id).then(res => {
+              if (this.$route.name == "myKeeps") {
+                this.$store.dispatch("getKeepsByUser");
+              } else {
+                this.$store.dispatch("getKeeps");
+              }
+            });
           }
         });
     },
@@ -85,6 +116,22 @@ export default {
               keepId: this.keepProp.id,
               vaultId: parseInt(this.$route.params.id)
             });
+          }
+        });
+    },
+    storeKeep(vaultId) {
+      this.$store
+        .dispatch("storeKeep", {
+          keepId: this.keepProp.id,
+          vaultId: vaultId
+        })
+        .then(res => {
+          if (this.$route.name == "myKeeps") {
+            this.$store.dispatch("getKeepsByUser");
+          } else if (this.$route.name == "home") {
+            this.$store.dispatch("getKeeps");
+          } else {
+            this.$store.dispatch("getVaultKeeps");
           }
         });
     }

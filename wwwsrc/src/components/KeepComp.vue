@@ -9,7 +9,11 @@
     />
     <div class="card-body">
       <h3 class="card-title">{{keepProp.name}}</h3>
-      <i class="far fa-eye fa-2x bg-primary badge-pill py-1">{{keepProp.views}}</i>
+      <i
+        class="far fa-eye fa-2x bg-primary badge-pill py-1"
+        data-toggle="tooltip"
+        title="Views"
+      >{{keepProp.views}}</i>
       <i
         class="fas fa-save fa-2x btn-success badge-pill py-1"
         data-toggle="dropdown"
@@ -40,19 +44,44 @@ export default {
       return this.$store.state.vaults;
     }
   },
+  mounted() {
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  },
   methods: {
     viewKeep() {
-      this.$store.dispatch("addToKeep", {
-        id: this.keepProp.id,
-        views: this.keepProp.views + 1,
-        stores: this.keepProp.stores
-      });
+      this.$store
+        .dispatch("addToKeep", {
+          id: this.keepProp.id,
+          views: this.keepProp.views + 1,
+          stores: this.keepProp.stores
+        })
+        .then(res => {
+          if (this.$route.name == "myKeeps") {
+            this.$store.dispatch("getKeepsByUser");
+          } else if (this.$route.name == "home") {
+            this.$store.dispatch("getKeeps");
+          } else {
+            this.$store.dispatch("getVaultKeeps");
+          }
+        });
     },
     storeKeep(vaultId) {
-      this.$store.dispatch("storeKeep", {
-        keepId: this.keepProp.id,
-        vaultId: vaultId
-      });
+      this.$store
+        .dispatch("storeKeep", {
+          keepId: this.keepProp.id,
+          vaultId: vaultId
+        })
+        .then(res => {
+          if (this.$route.name == "myKeeps") {
+            this.$store.dispatch("getKeepsByUser");
+          } else if (this.$route.name == "home") {
+            this.$store.dispatch("getKeeps");
+          } else {
+            this.$store.dispatch("getVaultKeeps");
+          }
+        });
     }
   },
   components: { KeepView },

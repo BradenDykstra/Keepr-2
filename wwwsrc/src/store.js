@@ -33,7 +33,7 @@ export default new Vuex.Store({
       state.vault = {}
     },
     setKeeps(state, keeps) {
-      state.keeps = keeps;
+      state.keeps = keeps.reverse();
     },
     setVault(state, vault) {
       state.vault = vault
@@ -77,7 +77,7 @@ export default new Vuex.Store({
     async getKeeps({ commit, dispatch }) {
       try {
         let keeps = await api.get('keeps');
-        commit('setKeeps', keeps.data.reverse())
+        commit('setKeeps', keeps.data)
       } catch (e) {
         console.error(e)
       }

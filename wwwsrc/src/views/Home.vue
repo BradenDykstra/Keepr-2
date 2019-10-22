@@ -42,6 +42,9 @@ export default {
   mounted() {
     this.$store.dispatch("getKeeps");
     this.$store.dispatch("getVaults");
+    $(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
   },
   methods: {
     logout() {
