@@ -79,13 +79,15 @@ export default {
         });
     },
     storeKeep(vaultId) {
+      this.$store.dispatch("storeKeep", {
+        keepId: this.keepProp.id,
+        vaultId: vaultId
+      });
       this.$store
-        .dispatch("storeKeep", {
-          keepId: this.keepProp.id,
-          vaultId: vaultId
-        })
-        .then(res => {
-          this.$store.dispatch("addAStore", this.keepProp.id);
+        .dispatch("addToKeep", {
+          id: this.keepProp.id,
+          stores: this.keepProp.stores + 1,
+          views: this.keepProp.views
         })
         .then(res => {
           if (this.$route.name == "myKeeps") {
@@ -93,7 +95,7 @@ export default {
           } else if (this.$route.name == "home") {
             this.$store.dispatch("getKeeps");
           } else {
-            this.$store.dispatch("getVaultKeeps");
+            this.$store.dispatch("getVaultKeeps", this.$route.params.id);
           }
         });
     }
