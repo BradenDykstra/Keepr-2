@@ -1,30 +1,61 @@
 <template>
-  <div class="login">
-    <h1 class="text-light my-5">Welcome to ToastKeepr!</h1>
-    <form class="row justify-content-center mt-5" v-if="loginForm" @submit.prevent="loginUser">
-      <input class="form-control col-4" type="email" v-model="creds.email" placeholder="email" />
-      <input
-        class="form-control col-4"
-        type="password"
-        v-model="creds.password"
-        placeholder="password"
-      />
-      <button type="submit" class="btn-success btn">Login</button>
-    </form>
-    <form class="row justify-content-center mt-5" v-else @submit.prevent="register">
-      <input class="form-control col-3" type="text" v-model="newUser.username" placeholder="name" />
-      <input class="form-control col-3" type="email" v-model="newUser.email" placeholder="email" />
-      <input
-        class="form-control col-3"
-        type="password"
-        v-model="newUser.password"
-        placeholder="password"
-      />
-      <button type="submit" class="btn-warning btn">Create Account</button>
-    </form>
-    <div @click="loginForm = !loginForm">
-      <p v-if="loginForm" class="text-light">No account? Click to Register</p>
-      <p v-else class="text-light">Already have an account? Click to Login</p>
+  <div id="loginModal" class="login modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <h1 class="my-5">Welcome to ToastKeepr!</h1>
+        <form class="justify-content-center" v-if="loginForm" @submit.prevent="loginUser">
+          <div class="row">
+            <input
+              class="form-control col-8 offset-2"
+              type="email"
+              v-model="creds.email"
+              placeholder="email"
+            />
+            <input
+              class="form-control col-8 offset-2"
+              type="password"
+              v-model="creds.password"
+              placeholder="password"
+            />
+          </div>
+          <div class="row">
+            <button type="submit" class="btn-success btn col-2 offset-5" @click="close">Login</button>
+          </div>
+        </form>
+        <form class="justify-content-center" v-else @submit.prevent="register">
+          <div class="row">
+            <input
+              class="form-control col-8 offset-2"
+              type="text"
+              v-model="newUser.username"
+              placeholder="name"
+            />
+            <input
+              class="form-control col-8 offset-2"
+              type="email"
+              v-model="newUser.email"
+              placeholder="email"
+            />
+            <input
+              class="form-control col-8 offset-2"
+              type="password"
+              v-model="newUser.password"
+              placeholder="password"
+            />
+          </div>
+          <div class="row">
+            <button
+              type="submit"
+              class="btn-warning btn col-2 offset-5"
+              @click="close"
+            >Create Account</button>
+          </div>
+        </form>
+        <div @click="loginForm = !loginForm">
+          <p v-if="loginForm">No account? Click to Register</p>
+          <p v-else>Already have an account? Click to Login</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +88,9 @@ export default {
     },
     loginUser() {
       this.$store.dispatch("login", this.creds);
+    },
+    close() {
+      $("#loginModal").modal("hide");
     }
   }
 };

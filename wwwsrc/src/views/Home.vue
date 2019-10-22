@@ -10,7 +10,13 @@
     </div>
     <div class="row justify-content-center">
       <button class="btn-danger badge-pill" v-if="user.id" @click="logout">logout</button>
-      <button class="btn-primary badge-pill" v-else @click="login">Login</button>
+      <button
+        class="btn-primary badge-pill"
+        v-else
+        data-toggle="modal"
+        data-target="#loginModal"
+      >Login</button>
+      <login />
     </div>
     <hr class="bg-light" />
     <div class="row justify-content-around mt-2">
@@ -20,6 +26,7 @@
 </template>
 
 <script>
+import login from "./Login.vue";
 import keepComp from "../components/KeepComp.vue";
 import dropDown from "../components/DropDown.vue";
 export default {
@@ -40,9 +47,6 @@ export default {
     logout() {
       this.$store.dispatch("logout");
     },
-    login() {
-      this.$router.push("/login");
-    },
     goToKeeps() {
       this.$router.push("/");
     },
@@ -50,7 +54,7 @@ export default {
       this.$router.push("/vaults");
     }
   },
-  components: { keepComp, dropDown }
+  components: { keepComp, dropDown, login }
 };
 </script>
 
