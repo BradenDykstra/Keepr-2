@@ -15,7 +15,7 @@
         title="Views"
       >{{keepProp.views}}</i>
       <i
-        class="fas fa-save fa-2x yellow-btn badge-pill py-1"
+        class="fas fa-save fa-2x dark-btn badge-pill py-1"
         data-toggle="dropdown"
       >{{keepProp.stores}}</i>
       <div class="dropdown-menu">
