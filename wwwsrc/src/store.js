@@ -147,6 +147,13 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async deleteVault({ commit, dispatch }, payload) {
+      try {
+        await api.delete('vaults/' + payload)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //!SECTION 
 
     //SECTION --VAULTKEEPS--
@@ -163,6 +170,14 @@ export default new Vuex.Store({
         await api.post('vaultkeeps', payload)
         let keep = await api.get('keeps/' + payload.keepId)
         dispatch('addToKeep', { id: payload.keepId, stores: keep.data.stores + 1, views: keep.data.views })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    async removeKeep({ commit, dispatch }, payload) {
+      try {
+        await api.put('vaultkeeps', payload)
+        dispatch('getVaults')
       } catch (error) {
         console.error(error)
       }

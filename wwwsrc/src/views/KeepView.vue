@@ -22,6 +22,12 @@
               @click="deleteKeep"
               data-dismiss="modal"
             ></i>
+            <i
+              v-if="this.$route.params.id"
+              class="fas fa-ban text-danger m-5"
+              @click="removeKeep"
+              data-dismiss="modal"
+            ></i>
           </div>
         </div>
       </div>
@@ -46,9 +52,6 @@ export default {
   },
   mounted() {},
   methods: {
-    goHome() {
-      this.$router.push("/");
-    },
     deleteKeep() {
       swal
         .fire({
@@ -63,6 +66,25 @@ export default {
         .then(result => {
           if (result.value) {
             this.$store.dispatch("deleteKeep", this.keepProp.id);
+          }
+        });
+    },
+    removeKeep() {
+      swal
+        .fire({
+          title: "Are you sure you want to remove this keep from this vault?",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, remove it!"
+        })
+        .then(result => {
+          if (result.value) {
+            this.$store.dispatch("removeKeep", {
+              keepId: this.keepProp.id,
+              vaultId: parseInt(this.$route.params.id)
+            });
           }
         });
     }

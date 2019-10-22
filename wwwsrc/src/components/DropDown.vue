@@ -5,7 +5,6 @@
       <p class="dropdown-item" @click="goToKeeps()">The Keeps</p>
       <p class="dropdown-item" @click="goToVaults()">My Vaults</p>
       <p class="dropdown-item" @click="goToMyKeeps()">My Keeps</p>
-      <p class="dropdown-item" @click="goToMakeKeep()">Post a Keep</p>
     </div>
   </div>
 </template>
@@ -27,9 +26,6 @@ export default {
     },
     goToMyKeeps() {
       this.$router.push("/myKeeps");
-    },
-    goToMakeKeep() {
-      this.$router.push("/makeKeep");
     }
   },
   components: {}

@@ -8,6 +8,7 @@
       </div>
     </div>
     <hr class="bg-light" />
+    <button class="btn btn-primary" @click="goToMakeKeep">New Keep</button>
     <div class="row justify-content-around">
       <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
@@ -34,7 +35,11 @@ export default {
   mounted() {
     this.$store.dispatch("getKeepsByUser");
   },
-  methods: {},
+  methods: {
+    goToMakeKeep() {
+      this.$router.push("/makeKeep");
+    }
+  },
   components: { dropDown, keepComp }
 };
 </script>
