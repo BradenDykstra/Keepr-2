@@ -18,18 +18,20 @@
                 data-toggle="tooltip"
                 title="Views"
               >{{keepProp.views}}</i>
-              <i
-                class="fas fa-save fa-2x dark-btn badge-pill py-1"
-                data-toggle="dropdown"
-              >{{keepProp.stores}}</i>
-              <div class="dropdown-menu">
-                <p
-                  v-for="vault in vaults"
-                  :key="vault.id"
-                  class="dropdown-item"
-                  @click="storeKeep(vault.id)"
-                >{{vault.name}}</p>
-              </div>
+              <span data-toggle="tooltip" title="Store this keep in a vault">
+                <i
+                  class="fas fa-save fa-2x dark-btn badge-pill py-1"
+                  data-toggle="dropdown"
+                >{{keepProp.stores}}</i>
+                <div class="dropdown-menu blue-bg">
+                  <p
+                    v-for="vault in vaults"
+                    :key="vault.id"
+                    class="dropdown-item light-text"
+                    @click="storeKeep(vault.id)"
+                  >{{vault.name}}</p>
+                </div>
+              </span>
             </div>
             <span data-toggle="tooltip" title="Delete this keep">
               <i

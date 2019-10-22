@@ -8,24 +8,33 @@
       @click="viewKeep"
     />
     <div class="card-body">
-      <h3 class="card-title">{{keepProp.name}}</h3>
+      <h3
+        class="card-title"
+        data-toggle="modal"
+        :data-target="'#keepView'+keepProp.id"
+        @click="viewKeep"
+      >{{keepProp.name}}</h3>
       <i
         class="far fa-eye fa-2x blue-btn badge-pill py-1"
-        data-toggle="tooltip"
+        data-toggle="modal"
         title="Views"
+        @click="viewKeep"
+        :data-target="'#keepView'+keepProp.id"
       >{{keepProp.views}}</i>
-      <i
-        class="fas fa-save fa-2x dark-btn badge-pill py-1"
-        data-toggle="dropdown"
-      >{{keepProp.stores}}</i>
-      <div class="dropdown-menu">
-        <p
-          v-for="vault in vaults"
-          :key="vault.id"
-          class="dropdown-item"
-          @click="storeKeep(vault.id)"
-        >{{vault.name}}</p>
-      </div>
+      <span data-toggle="tooltip" title="Store this keep in a vault">
+        <i
+          class="fas fa-save fa-2x dark-btn badge-pill py-1"
+          data-toggle="dropdown"
+        >{{keepProp.stores}}</i>
+        <div class="dropdown-menu blue-bg">
+          <p
+            v-for="vault in vaults"
+            :key="vault.id"
+            class="dropdown-item light-text"
+            @click="storeKeep(vault.id)"
+          >{{vault.name}}</p>
+        </div>
+      </span>
     </div>
     <KeepView :keepProp="keepProp" />
   </div>

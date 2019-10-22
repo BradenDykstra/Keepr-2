@@ -1,10 +1,10 @@
 <template>
   <div class="dropdown">
     <i class="fas fa-bars light-text fa-3x" data-toggle="dropdown"></i>
-    <div class="dropdown-menu">
-      <p class="dropdown-item" @click="goToKeeps()">The Keeps</p>
-      <p class="dropdown-item" @click="goToVaults()">My Vaults</p>
-      <p class="dropdown-item" @click="goToMyKeeps()">My Keeps</p>
+    <div class="dropdown-menu blue-bg">
+      <p class="dropdown-item light-text" @click="goToKeeps()">The Keeps</p>
+      <p class="dropdown-item light-text" @click="goToVaults()">My Vaults</p>
+      <p class="dropdown-item light-text" @click="goToMyKeeps()">My Keeps</p>
     </div>
   </div>
 </template>
