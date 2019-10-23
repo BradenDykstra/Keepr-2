@@ -7,9 +7,11 @@
       <login />
     </div>
     <hr class="light-bg" />
-    <div class="row justify-content-around mt-2">
-      <keepComp class="col-md-2 col-6" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
-    </div>
+    <Stack :column-min-width="200" :gutter-width="8">
+      <StackItem v-for="keep in keeps" :key="keep.id" style="transition: transform 300ms">
+        <keepComp :keepProp="keep" />
+      </StackItem>
+    </Stack>
   </div>
 </template>
 
@@ -17,6 +19,7 @@
 import login from "./Login.vue";
 import keepComp from "../components/KeepComp.vue";
 import topBar from "../components/TopBar.vue";
+import { Stack, StackItem } from "vue-stack-grid";
 export default {
   name: "home",
   computed: {
@@ -24,6 +27,9 @@ export default {
       return this.$store.state.user;
     },
     keeps() {
+      this.$store.state.keeps.forEach(keep => {
+        keep.height = Math.floor(Math.random() * 1000);
+      });
       return this.$store.state.keeps;
     }
   },
@@ -45,7 +51,13 @@ export default {
       this.$router.push("/vaults");
     }
   },
-  components: { keepComp, login, topBar }
+  components: {
+    keepComp,
+    login,
+    topBar,
+    Stack,
+    StackItem
+  }
 };
 </script>
 
