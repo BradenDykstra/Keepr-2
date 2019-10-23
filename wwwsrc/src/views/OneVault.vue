@@ -35,6 +35,7 @@ export default {
     $(function() {
       $('[data-toggle="tooltip"]').tooltip();
     });
+    this.$store.dispatch("getVaults");
   },
   computed: {
     keeps() {
@@ -42,6 +43,9 @@ export default {
     },
     vault() {
       return this.$store.state.vault;
+    },
+    vaults() {
+      return this.$store.state.vaults;
     }
   },
   methods: {

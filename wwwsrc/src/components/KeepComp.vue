@@ -22,19 +22,8 @@
           :data-target="'#keepView'+keepProp.id"
         >{{keepProp.views}}</i>
       </span>
-      <span data-toggle="tooltip" title="Store this keep in a vault">
-        <i
-          class="ra ra-toast fa-2x dark-btn badge-pill py-1"
-          data-toggle="dropdown"
-        >{{keepProp.stores}}</i>
-        <div class="dropdown-menu blue-bg">
-          <p
-            v-for="vault in vaults"
-            :key="vault.id"
-            class="dropdown-item light-text"
-            @click="storeKeep(vault.id)"
-          >{{vault.name}}</p>
-        </div>
+      <span data-toggle="tooltip" title="Keeps">
+        <i class="ra ra-toast fa-2x dark-btn badge-pill py-1">{{keepProp.stores}}</i>
       </span>
     </div>
   </div>

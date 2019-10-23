@@ -29,9 +29,6 @@ export default {
       return this.$store.state.user;
     },
     keeps() {
-      this.$store.state.keeps.forEach(keep => {
-        keep.height = Math.floor(Math.random() * 1000);
-      });
       return this.$store.state.keeps;
     }
   },
@@ -41,13 +38,12 @@ export default {
     $(function() {
       $('[data-toggle="tooltip"]').tooltip();
     });
-    // this.$nextTick(() => {
-    //   window.dispatchEvent(new Event("resize"));
-    // });
   },
   methods: {
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch("logout").then(res => {
+        this.$store.dispatch("getVaults");
+      });
     },
     goToKeeps() {
       this.$router.push("/");
