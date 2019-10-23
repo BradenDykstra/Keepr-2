@@ -9,9 +9,12 @@
       data-toggle="tooltip"
       title="Delete this vault"
     ></i>
-    <div class="row justify-content-around mt-2">
-      <keepComp class="col-3" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
-    </div>
+    <Stack :column-min-width="200" :monitor-images-loaded="true">
+      <StackItem v-for="keep in keeps" :key="keep.id" style="transition: transform 300ms">
+        <keepComp :keepProp="keep" />
+      </StackItem>
+    </Stack>
+    <KeepView v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
   </div>
 </template>
 
@@ -20,6 +23,8 @@
 import topBar from "../components/TopBar.vue";
 import swal from "sweetalert2";
 import keepComp from "../components/KeepComp.vue";
+import { Stack, StackItem } from "vue-stack-grid";
+import KeepView from "./KeepView.vue";
 export default {
   name: "oneVault",
   data() {
@@ -65,7 +70,7 @@ export default {
         });
     }
   },
-  components: { keepComp, topBar }
+  components: { keepComp, topBar, Stack, StackItem, KeepView }
 };
 </script>
 

@@ -37,7 +37,6 @@
         </div>
       </span>
     </div>
-    <KeepView :keepProp="keepProp" />
   </div>
 </template>
 

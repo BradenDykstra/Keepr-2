@@ -5,7 +5,12 @@
     <button class="badge-pill blue-btn" data-toggle="modal" data-target="#makeKeepModal">New Keep</button>
     <make-keep-modal />
     <div class="row justify-content-around">
-      <keepComp class="col-md-2 col-6" v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
+      <Stack :column-min-width="200" :gutter-width="8" :monitor-images-loaded="true">
+        <StackItem v-for="keep in keeps" :key="keep.id" style="transition: transform 300ms">
+          <keepComp :keepProp="keep" />
+        </StackItem>
+      </Stack>
+      <KeepView v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
     </div>
   </div>
 </template>
@@ -15,6 +20,8 @@
 import topBar from "../components/TopBar.vue";
 import keepComp from "../components/KeepComp.vue";
 import makeKeepModal from "./MakeKeep.vue";
+import { Stack, StackItem } from "vue-stack-grid";
+import KeepView from "./KeepView.vue";
 export default {
   name: "myKeeps",
   data() {
@@ -40,7 +47,7 @@ export default {
       this.$router.push("/makeKeep");
     }
   },
-  components: { topBar, keepComp, makeKeepModal }
+  components: { topBar, keepComp, makeKeepModal, Stack, StackItem, KeepView }
 };
 </script>
 

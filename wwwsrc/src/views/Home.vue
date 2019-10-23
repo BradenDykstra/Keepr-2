@@ -7,11 +7,12 @@
       <login />
     </div>
     <hr class="light-bg" />
-    <Stack :column-min-width="200" :gutter-width="8">
+    <Stack :column-min-width="200" :monitor-images-loaded="true">
       <StackItem v-for="keep in keeps" :key="keep.id" style="transition: transform 300ms">
         <keepComp :keepProp="keep" />
       </StackItem>
     </Stack>
+    <KeepView v-for="keep in keeps" :key="keep.id" :keepProp="keep" />
   </div>
 </template>
 
@@ -20,6 +21,7 @@ import login from "./Login.vue";
 import keepComp from "../components/KeepComp.vue";
 import topBar from "../components/TopBar.vue";
 import { Stack, StackItem } from "vue-stack-grid";
+import KeepView from "./KeepView.vue";
 export default {
   name: "home",
   computed: {
@@ -39,6 +41,9 @@ export default {
     $(function() {
       $('[data-toggle="tooltip"]').tooltip();
     });
+    // this.$nextTick(() => {
+    //   window.dispatchEvent(new Event("resize"));
+    // });
   },
   methods: {
     logout() {
@@ -56,7 +61,8 @@ export default {
     login,
     topBar,
     Stack,
-    StackItem
+    StackItem,
+    KeepView
   }
 };
 </script>
