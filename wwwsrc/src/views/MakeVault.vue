@@ -52,6 +52,7 @@ export default {
   methods: {
     createVault() {
       this.$store.dispatch("createVault", this.newVault);
+      this.newVault = {};
     },
     close() {
       $("#makeVaultModal").modal("hide");

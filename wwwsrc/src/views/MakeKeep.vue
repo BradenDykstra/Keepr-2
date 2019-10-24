@@ -57,6 +57,7 @@ export default {
   methods: {
     createKeep() {
       this.$store.dispatch("createKeep", this.newKeep);
+      this.newKeep = {};
     },
     close() {
       $("#makeKeepModal").modal("hide");

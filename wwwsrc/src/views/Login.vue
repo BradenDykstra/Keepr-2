@@ -89,11 +89,13 @@ export default {
   methods: {
     register() {
       this.$store.dispatch("register", this.newUser);
+      this.newUser = {};
     },
     loginUser() {
       this.$store.dispatch("login", this.creds).then(res => {
         this.$store.dispatch("getVaults");
       });
+      this.creds = {};
     },
     close() {
       $("#loginModal").modal("hide");
