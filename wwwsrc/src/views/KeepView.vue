@@ -111,10 +111,25 @@ export default {
         })
         .then(result => {
           if (result.value) {
-            this.$store.dispatch("removeKeep", {
-              keepId: this.keepProp.id,
-              vaultId: parseInt(this.$route.params.id)
-            });
+            this.$store
+              .dispatch("removeKeep", {
+                keepId: this.keepProp.id,
+                vaultId: parseInt(this.$route.params.id)
+              })
+              .then(res => {
+                $("#keepView" + this.keepProp.id).modal("hide");
+
+                if (this.$route.name == "myKeeps") {
+                  this.$store.dispatch("getKeepsByUser");
+                } else if (this.$route.name == "home") {
+                  this.$store.dispatch("getKeeps");
+                } else {
+                  this.$store.dispatch(
+                    "getVaultKeeps",
+                    this.$store.state.vault.id
+                  );
+                }
+              });
           }
         });
     },
