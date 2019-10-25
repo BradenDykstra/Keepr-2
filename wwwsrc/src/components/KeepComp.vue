@@ -1,26 +1,15 @@
 <template>
-  <div class="keepComp card mx-2 my-2 light-bg dark-text">
-    <img
-      class="card-img-top mt-2"
-      :src="keepProp.img"
-      data-toggle="modal"
-      :data-target="'#keepView'+keepProp.id"
-      @click="viewKeep"
-    />
+  <div
+    class="keepComp card mx-2 my-2 light-bg dark-text"
+    @click="viewKeep"
+    data-toggle="modal"
+    :data-target="'#keepView'+keepProp.id"
+  >
+    <img class="card-img-top mt-2" :src="keepProp.img" />
     <div class="card-body">
-      <h3
-        class="card-title"
-        data-toggle="modal"
-        :data-target="'#keepView'+keepProp.id"
-        @click="viewKeep"
-      >{{keepProp.name}}</h3>
+      <h3 class="card-title">{{keepProp.name}}</h3>
       <span data-toggle="tooltip" title="Views">
-        <i
-          class="far fa-eye fa-2x blue-btn badge-pill py-1"
-          data-toggle="modal"
-          @click="viewKeep"
-          :data-target="'#keepView'+keepProp.id"
-        >{{keepProp.views}}</i>
+        <i class="far fa-eye fa-2x blue-btn badge-pill py-1">{{keepProp.views}}</i>
       </span>
       <span data-toggle="tooltip" title="Keeps">
         <i class="ra ra-toast fa-2x dark-btn badge-pill py-1">{{keepProp.stores}}</i>
